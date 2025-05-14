@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Anomaly Explorer</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.13.0/dist/tf.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ================= Header + Intro ================= -->
+  <header class="header">
+    <h1>Password Anomaly Explorer</h1>
+    <p class="intro-header">
+      This site starts with a library of “normal” passwords—both preloaded examples
+      and at least ten you add—to give its tiny AI model called an <strong>autoencoder</strong>
+      enough data to learn typical patterns. When you test a new password, the site
+      can rebuild it: a low reconstruction error marks it as <em>Normal</em>,
+      while a high error flags it as <em>Anomalous</em>.
+    </p>
+  </header>
+
+  <!-- ================= Main Panels ================= -->
+  <main class="container">
+    <!-- Preloaded Training Set -->
+    <section class="panel">
+      <h2>Preloaded Training Set</h2>
+      <div id="training-list" class="grid">Loading…</div>
+    </section>
+
+    <!-- Add Your Passwords -->
+    <section class="panel">
+      <h2>Add Your Passwords</h2>
+      <p>Please enter at least 10 passwords (one per line) that your class has defined as a “reasonable” password.</p>
+      <textarea id="new-passwords" placeholder="e.g. CorrectHorseBatteryStaple!"></textarea>
+      <button id="add-button">Add to Training Set</button>
+      <div id="add-feedback" class="feedback"></div>
+    </section>
+
+    <!-- Test a Password -->
+    <section class="panel">
+      <h2>Test a Password</h2>
+      <p class="anomaly-def">
+        An anomaly is something that doesn’t fit the usual pattern or expectation—an outlier or “odd one out.” 
+        In our password explorer, an anomalous password is one the tiny AI model couldn’t rebuild very well 
+        because it looked different from the training examples.
+      </p>
+
+      <input id="test-input" type="text" placeholder="Enter password to test">
+      <button id="test-button">Check Anomaly</button>
+
+      <div id="test-result" class="result-box"></div>
+      <div id="highlighted-password" class="highlighted"></div>
+
+      <input id="edit-input" type="text" placeholder="Retype or edit your password">
+      <button id="retest-button">Retest</button>
+      <div id="compare-result" class="compare-box"></div>
+    </section>
+  </main>
+
+  <!-- ================= Footer ================= -->
+  <footer class="footer">
+    © 2025 Alabama State Department of Education (ALSDE) & Alabama School of Cyber Technology & Engineering (ASCTE). 
+    All rights reserved. This curriculum may not be reproduced, distributed, or modified without express written permission 
+    from ALSDE and ASCTE.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
